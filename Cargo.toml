@@ -9,6 +9,7 @@ edition = "2021"
 borsh = "0.9.1"
 bindgen = "0.59.1"
 env_logger = "0.9.0"
+log = "0.4.14"
 
 [lib]
 crate-type = ["cdylib", "lib"]

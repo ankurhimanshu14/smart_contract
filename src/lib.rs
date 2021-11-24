@@ -34,6 +34,9 @@ mod tests {
         let _context = get_context(vec![], false);
         
         let mut contract = KeyValue::default();
+
+        println!("{:?}", &contract);
+
         contract.create_update("first_key".to_string(), "hello".to_string());
         assert_eq!(
             "hello",
@@ -47,5 +50,29 @@ mod tests {
         let _context = get_context(vec![], true);
         let contract = KeyValue::default();
         assert_eq!(None, contract.read("first_key".to_string()));
+    }
+
+    //Test 3
+    #[test]
+    fn increment_val() {
+        let _context = get_context(vec![], true);
+        let mut contract = KeyValue::default();
+        assert_eq!(Some(1), contract.increment())
+    }
+
+    //Test 4
+    #[test]
+    fn decrement_val() {
+        let _context = get_context(vec![], true);
+        let mut contract = KeyValue::default();
+        assert_eq!(Some(-1), contract.decrement())
+    }
+
+    //Test 5
+    #[test]
+    fn reset_val() {
+        let _context = get_context(vec![], true);
+        let mut contract = KeyValue::default();
+        assert_eq!(Some(0), contract.reset())
     }
 }
