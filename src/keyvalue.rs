@@ -41,10 +41,8 @@ impl KeyValue {
 
     pub fn increment(&mut self) -> Option<i64> {
         self.value += 1;
-        env_logger::init();
         let log_message = format!("Increased number to {}", &self.value);
         info!("{:?}", log_message.as_bytes());
-        after_counter_change();
 
         Some(self.value)
     }
@@ -53,7 +51,6 @@ impl KeyValue {
         self.value -= 1;
         let log_message = format!("Increased number to {}", &self.value);
         info!("{:?}", log_message.as_bytes());
-        after_counter_change();
 
         Some(self.value)
     }
@@ -65,9 +62,4 @@ impl KeyValue {
 
         Some(self.value)
     }
-}
-
-fn after_counter_change() {
-    // show helpful warning that i8 (8-bit signed integer) will overflow above 127 or below -128
-    info!("{:?}", "Make sure you don't overflow, my friend.".as_bytes());
 }
